@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Display</title>
+    <style>
+    .carousel-item {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+      }
+    </style>
+</head>
+<body>
+    <img id="imageDisplay" src="" alt="Image Display">
+    <button id="prevButton">Previous</button>
+    <button id="nextButton">Next</button>
+    
+<h2>
+    <img class="carousel-item" src="https://media.giphy.com/media/g5nKOas06c14ueFHrb/giphy.gif" alt="Image 1">
+    <img class="carousel-item" src="https://media.giphy.com/media/GPFdOplLs2Mw2MfgTs/giphy.gif" alt="Image 2=">
+    <img class="carousel-item" src="https://media.giphy.com/media/7sKomBIZjaPRddnj05/giphy.gif" alt="Image 3">
+</h2>    
+    <script>
+        // Select and store references to the img element, the prevButton, and the nextButton
+const imageElement = document.getElementById("imageDisplay");
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+// Create a variable to keep track of the current image index
+let imageIndex = 0;
+
+// Write a function called displayImage that takes an index as an argument and updates the src attribute of the img element with the source of the image at the given index
+function displayImage(index) {
+  if (index < 0 || index >= carouselItems.length) {
+    return;
+  }
+
+  imageElement.src = carouselItems[index].src;
+}
+
+// Call the displayImage function with the initial index (0) to display the first image
+displayImage(imageIndex);
+
+// Create two additional functions, one for navigating to the previous image and one for navigating to the next image
+function previousImage() {
+  imageIndex--;
+  if (imageIndex < 0) {
+    imageIndex = carouselItems.length - 1;
+  }
+
+  displayImage(imageIndex);
+}
+
+function nextImage() {
+  imageIndex++;
+  if (imageIndex >= carouselItems.length) {
+    imageIndex = 0;
+  }
+
+  displayImage(imageIndex);
+}
+
+// Use document.getElementsByTagName and the class attribute to select all the elements with the class "carousel-item"
+const carouselItems = document.getElementsByClassName("carousel-item");
+    </script>
+</body>
+</html>
